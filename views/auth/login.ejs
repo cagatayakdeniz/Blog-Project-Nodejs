@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head")  %> 
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
+
+    <div class="container mt-3">
+        <div class="row">
+           <div class="col-md-12 mt-3">
+            <% if (typeof message!="undefined") { %>
+             <div class="alert alert-danger"><%= message %> </div>
+            <% } %>
+            <form method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="row mb-3">
+                    <label for="baslik" class="col-sm-2 col-form-label">E-mail</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="baslik" class="col-sm-2 col-form-label">Sifre</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="sifre" name="sifre">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12 offset-sm-2">
+                        <button type="submit" class="btn btn-primary" style="margin-left: 230px;height:50px;width:350px">Kaydet</button>    
+                        <a href="/auth/reset-password" style="margin-left: 180px;">Şifremi Sıfırla</a>
+                    </div>
+                </div>
+            </form>
+           </div> 
+        </div>
+    </div>
+
+</body>
+</html>

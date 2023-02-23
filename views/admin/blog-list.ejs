@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head")  %> 
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
+
+    <div class="container mt-3">
+        <div class="row">
+            <% if (action == "add") { %>
+             <div class="alert alert-success">
+                Blog başarıyla eklendi
+             </div>
+            <% } %>
+            <% if (action == "update") { %>
+                <div class="alert alert-success">
+                    Blog başarıyla güncellendi
+                 </div>
+            <% } %>
+            <% if (action == "delete") { %>
+                <div class="alert alert-success">
+                    Blog başarıyla silindi
+                 </div>
+            <% } %>
+            
+            <div class="col-md-12 mt-3">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">Id</th>
+                            <th style="width: 50px;">Resim</th>
+                            <th>Baslik</th>
+                            <th style="width: 50px;">Düzenle</th>
+                            <th style="width: 50px;">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% blog.forEach(blog => { %>
+                         <tr>
+                            <td><%= blog.dataValues.blogid %> </td>
+                            <td> 
+                                <img src="/static/images/<%= blog.dataValues.resim %>"  class="img-fluid">
+                            </td>
+                            <td><%= blog.baslik %> </td>
+                            <td>
+                                <a href="/admin/blogs/<%= blog.dataValues.blogid %>" class="btn btn-warning btn-sm" >Edit</a>
+                            </td>
+                            <td>
+                                <a href="/admin/blog/delete/<%= blog.dataValues.blogid %>" class="btn btn-danger btn-sm" >Delete</a>
+                            </td>
+                         </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

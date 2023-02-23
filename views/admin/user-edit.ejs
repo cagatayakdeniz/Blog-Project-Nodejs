@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head")  %> 
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
+
+    <div class="container mt-3">
+        <div class="row">
+           <div class="col-md-12 mt-3 shadow">
+            <form method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="userid" value="<%= userid %>">
+                <div class="row mb-3 mt-3">
+                    <label for="baslik" class="col-sm-2 col-form-label"><b>Kullanıcının Rolü:</b></label>
+                    <div class="col-sm-8">
+                        <select name="rol" id="rol" class="form-select">
+                            <% roles.forEach(rol => { %>  
+                                <% if (rol.dataValues.id == userid) { %>
+                                    <option value="<%= rol.dataValues.id %>" selected><%= rol.dataValues.roleName %> </option>
+                                 <% } else { %>
+                                    <option value="<%= rol.dataValues.id %>"><%= rol.dataValues.roleName %> </option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12 offset-sm-2">
+                        <button type="submit" class="btn btn-primary" style="margin-left: 280px;height:40px;width:250px">Kaydet</button>    
+                    </div>
+                </div>
+            </form>
+        </div> 
+    </div>
+        </div>
+    </div>
+
+</body>
+</html>

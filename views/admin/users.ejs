@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head")  %> 
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">Id</th>
+                            <th>Kullanıcı Ad Soyad</th>
+                            <th>Kullanıcı Email</th>
+                            <th>Rol</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user => { %>
+                            <tr>
+                               <td><%= user.id %> </td>
+                               <td><%= user.adsoyad %> </td>
+                               <td><%= user.email %> </td>
+                               <td><%= user.roleName %> </td>
+                               <td>
+                                <a href="/admin/users/<%= user.id %>" class="btn btn-warning">Edit</a>
+                               </td>
+                            </tr>
+                           <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

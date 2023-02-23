@@ -1,0 +1,54 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <div class="container">
+        <a href="/" class="navbar-brand">Blogapp</a>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a href="/blogs" class="nav-link">Blog Listesi</a>
+            </li>
+            <% if (typeof role != undefined && role == "Moderator") { %>
+                <li class="nav-item">
+                    <a href="/admin/blog-list" class="nav-link">Kontrol Blog Listesi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/blog/create" class="nav-link">Blog Ekle</a>
+                </li>
+            <% } %>
+            <% if (typeof role != undefined && role == "Admin") { %>
+                <li class="nav-item">
+                    <a href="/admin/blog-list" class="nav-link">Kontrol Blog Listesi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/blog/create" class="nav-link">Blog Ekle</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/category-list" class="nav-link">Admin Kategori Listesi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/category/create" class="nav-link">Admin Kategori Ekle</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/roles" class="nav-link">Roller</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/users" class="nav-link">Kullanıcılar</a>
+                </li>
+            <% } %>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+
+            <% if (typeof isAuth != "undefined" && isAuth == "1") { %>   
+                <li class="nav-item">
+                    <a href="/auth/logout" class="nav-link">Logout</a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a href="/auth/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/auth/register" class="nav-link">Register</a>
+                </li>
+            <% } %>               
+            
+        </ul>
+    </div>
+</nav>

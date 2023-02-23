@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head")  %> 
+</head>
+<body>
+    
+    <%- include("../partials/nav")  %> 
+
+    <div class="container mt-3">
+        <div class="row">
+            <% if (action == "add") { %>
+             <div class="alert alert-success">
+                Kategori başarıyla eklendi
+             </div>
+            <% } %>
+            <% if (action == "update") { %>
+                <div class="alert alert-success">
+                    Kategori başarıyla güncellendi
+                 </div>
+            <% } %>
+            <% if (action == "delete") { %>
+                <div class="alert alert-success">
+                    Kategori başarıyla silindi
+                 </div>
+            <% } %>
+            
+            <div class="col-md-12 mt-3">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">Id</th>
+                            <th>Kategori Adı</th>
+                            <th style="width: 50px;">Düzenle</th>
+                            <th style="width: 50px;">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% category.forEach(category => { %>
+                         <tr>
+                            <td><%= category.dataValues.categoryid %> </td>
+                            <td><%= category.dataValues.name %> </td>
+                            <td>
+                                <a href="/admin/categories/<%= category.dataValues.categoryid %>" class="btn btn-warning btn-sm" >Edit</a>
+                            </td>
+                            <td>
+                                <a href="/admin/category/delete/<%= category.dataValues.categoryid %>" class="btn btn-danger btn-sm" >Delete</a>
+                            </td>
+                         </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
